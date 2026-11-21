@@ -1,0 +1,53 @@
+{
+  "_description": "M1–M6: dış CV sonuçları görülmeden önce sabitlenmiş, hipotez temelli manuel adaylar. Ortak varsayılanlar: batch_size=64, dropout=0, activation=relu, weight_decay=1e-4, early stopping aktif, clipping yok.",
+  "candidates": [
+    {
+      "id": "M1",
+      "optimizer": "adamw", "hidden_layers": [32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "standard", "dropout": 0.0, "clipping": false, "scheduler": true,
+      "purpose": "Temel manuel konfigürasyon",
+      "hypothesis": "Referans noktası; diğer adaylar bu konfigürasyondan tek bir faktör değiştirilerek türetilir."
+    },
+    {
+      "id": "M2",
+      "optimizer": "adam", "hidden_layers": [32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "standard", "dropout": 0.0, "clipping": false, "scheduler": true,
+      "purpose": "Optimizer etkisi (AdamW → Adam)",
+      "hypothesis": "Adam'da weight decay gradyana eklenen L2 cezası olarak adaptif paydaya bölündüğü için zayıflar; WD=1e-4 gibi küçük bir değerde M1 ile iç CV AP farkının küçük olması beklenir."
+    },
+    {
+      "id": "M3",
+      "optimizer": "sgd", "hidden_layers": [32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "standard", "dropout": 0.0, "clipping": false, "scheduler": true,
+      "purpose": "Optimizer etkisi (AdamW → SGD+Momentum 0.9)",
+      "hypothesis": "Adaptif olmayan SGD, LR=1e-3 ile yavaş yakınsar; en iyi epoch'un M1'e göre daha geç (150 sınırına yakın) ve iç CV AP'nin daha düşük olması beklenir."
+    },
+    {
+      "id": "M4",
+      "optimizer": "adamw", "hidden_layers": [32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "minmax", "dropout": 0.0, "clipping": false, "scheduler": true,
+      "purpose": "Ölçekleme etkisi (Standard → MinMax)",
+      "hypothesis": "Sağa çarpık ve aykırı değer içeren özelliklerde (ör. campaign) MinMax ölçekleme değerlerin çoğunu dar bir aralığa sıkıştırır; iç CV AP'nin M1'e benzer veya biraz düşük olması beklenir."
+    },
+    {
+      "id": "M5",
+      "optimizer": "adamw", "hidden_layers": [64, 32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "standard", "dropout": 0.0, "clipping": false, "scheduler": true,
+      "purpose": "Mimari etkisi ((32,) → (64,32))",
+      "hypothesis": "Yaklaşık üç kat daha fazla parametre küçük veri setinde anlamlı AP kazancı sağlamaz; daha hızlı aşırı öğrenme nedeniyle en iyi epoch'un daha erken olması beklenir."
+    },
+    {
+      "id": "M6",
+      "optimizer": "adamw", "hidden_layers": [32], "activation": "relu",
+      "lr": 0.001, "weight_decay": 0.0001, "batch_size": 64,
+      "scaler": "standard", "dropout": 0.0, "clipping": false, "scheduler": false,
+      "purpose": "Learning-rate-drop etkisi (scheduler kapalı)",
+      "hypothesis": "Plato sonrasında LR yarılanmadığı için daha küçük adımlarla iyileşme şansı kaybolur; eğitimin daha kısa sürmesi ve iç CV AP'nin M1'e benzer veya biraz düşük olması beklenir."
+    }
+  ]
+}

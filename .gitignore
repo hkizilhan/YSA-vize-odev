@@ -3,3 +3,8 @@
 
 # Word dosyaları
 *.docx
+
+# Jupyter / Python
+.ipynb_checkpoints/
+__pycache__/
+*.pyc

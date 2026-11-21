@@ -1,0 +1,20 @@
+{
+  "student_id_last5": 29039,
+  "base_seed": 31065,
+  "derivation": "alt_seed = base_seed + offset (deterministik)",
+  "global_python_numpy_torch": 31065,
+  "dev_test_split": 31066,
+  "outer_cv": 31067,
+  "inner_cv": 31068,
+  "early_stop_subset": 31069,
+  "random_search_sampler": 31070,
+  "bootstrap": 31071,
+  "weight_init_primary": 31065,
+  "weight_init_stability": [31065, 32065, 33065],
+  "notes": {
+    "weight_init_primary": "Her MLP eğitiminden önce torch.manual_seed(weight_init_primary): tüm adaylar aynı başlangıç politikasıyla eğitilir; DataLoader karıştırma üreteci de bu seed ile başlatılır.",
+    "inner_cv": "Her outer-train içinde aynı random_state kullanılır; manuel ve otomatik adaylar birebir aynı inner fold'larda değerlendirilir.",
+    "early_stop_subset": "Inner-train içinden %15 stratified alt küme; aynı inner fold'daki tüm adaylar için aynıdır.",
+    "weight_init_stability": "Nihai konfigürasyon için önceden ilan edilmiş üç başlangıç seed'i; ilki birincil (ana) modeldir."
+  }
+}

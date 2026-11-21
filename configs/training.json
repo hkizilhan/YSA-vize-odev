@@ -1,0 +1,48 @@
+{
+  "data": {
+    "file": "data/bank-additional.csv",
+    "sep": ";",
+    "target": "y",
+    "positive_label": "yes",
+    "negative_label": "no",
+    "dropped_features": ["duration"],
+    "dropped_reason": "duration görüşme bitmeden bilinmez; model performansına bakılmadan önce sabitlenmiş uygulama kuralı",
+    "test_size": 0.20
+  },
+  "cv": {
+    "outer": {"n_splits": 3, "shuffle": true},
+    "inner": {"n_splits": 3, "shuffle": true},
+    "early_stop_fraction": 0.15
+  },
+  "mlp": {
+    "output": "tek logit",
+    "loss": "BCEWithLogitsLoss",
+    "probability": "sigmoid(logit)",
+    "max_epochs": 150,
+    "sgd_momentum": 0.9
+  },
+  "early_stopping": {
+    "monitor": "early-stop alt kümesinde BCE kaybı",
+    "mode": "min",
+    "patience": 15,
+    "restore_best_weights": true
+  },
+  "lr_scheduler": {
+    "name": "ReduceLROnPlateau",
+    "monitor": "early-stop alt kümesinde BCE kaybı",
+    "mode": "min",
+    "factor": 0.5,
+    "patience": 5,
+    "min_lr": 1e-05
+  },
+  "preprocessing": {
+    "numeric_imputer": "median (fold-local)",
+    "categorical_unknown": "category: 'unknown' ayrı kategori olarak tutulur",
+    "categorical_encoder": "OneHotEncoder(handle_unknown='ignore')",
+    "clipping_percentiles": [1, 99]
+  },
+  "selection": {
+    "primary_metric": "average_precision_score (inner CV ortalaması)",
+    "threshold": 0.5
+  }
+}
