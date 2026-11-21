@@ -1,0 +1,4 @@
+outer_fold,outer_train,outer_train_pos,outer_eval,outer_eval_pos,inner_train (ort.),inner_val (ort.),fit/e-stop (inner),bölünen ikiz çift
+1,2196,238,1099,119,1464.0,732.0,1244/220,7
+2,2197,238,1098,119,1464.6666666666667,732.3333333333333,1245/220,7
+3,2197,238,1098,119,1464.6666666666667,732.3333333333333,1245/220,4

@@ -1,0 +1,7 @@
+candidate,konfigürasyon,Outer 1,Outer 2,Outer 3,Development (nihai seçim),en iyi epoch (ort.),"süre (s, toplam)",parametre,uyarılar
+R1,"SGD+M (64, 32) relu lr=0.0422 wd=1e-05 bs=32 robust do=0.2 clip=0 sch=1",0.424 ± 0.050,0.325 ± 0.019,0.385 ± 0.070,0.404 ± 0.018,6.0,13.2,6081–6145,
+R2,"SGD+M (32,) relu lr=0.00995 wd=1e-03 bs=128 robust do=0.0 clip=0 sch=1",0.439 ± 0.044,0.367 ± 0.010,0.404 ± 0.081,0.398 ± 0.024,63.0,9.5,2017–2049,max_epoch_reached
+R3,"Adam (16,) tanh lr=0.000174 wd=1e-04 bs=64 robust do=0.0 clip=0 sch=1",0.459 ± 0.028 ★,0.382 ± 0.009 ★,0.411 ± 0.067 ★,0.416 ± 0.012 ★,94.4,30.5,1009–1025,max_epoch_reached
+R4,"Adam (32,) tanh lr=0.000973 wd=0e+00 bs=32 robust do=0.0 clip=0 sch=1",0.440 ± 0.043,0.372 ± 0.018,0.392 ± 0.063,0.410 ± 0.006,18.0,17.3,2017–2049,
+R5,"AdamW (32,) tanh lr=0.000373 wd=1e-05 bs=64 robust do=0.0 clip=0 sch=1",0.448 ± 0.035,0.376 ± 0.009,0.394 ± 0.062,0.411 ± 0.007,38.8,16.0,2017–2049,
+R6,"AdamW (32,) relu lr=0.000336 wd=0e+00 bs=64 minmax do=0.2 clip=0 sch=1",0.443 ± 0.034,0.366 ± 0.003,0.397 ± 0.063,0.403 ± 0.005,58.4,22.5,2017–2049,max_epoch_reached

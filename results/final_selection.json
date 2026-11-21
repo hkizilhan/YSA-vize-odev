@@ -1,0 +1,41 @@
+{
+  "rule": "Her arama kendi kazananını iç CV mean AP ile seçer (eşitlikte düşük SD, sonra sıra); iki kazanan arasından development iç CV mean AP'si yüksek olan seçilir (eşitlikte düşük SD, sonra manuel).",
+  "winners": [
+    {
+      "search": "manual",
+      "candidate": "M5",
+      "AP_mean": 0.4171838772696506,
+      "AP_sd": 0.009784665261891522
+    },
+    {
+      "search": "random",
+      "candidate": "R3",
+      "AP_mean": 0.41620880345013483,
+      "AP_sd": 0.011918938196165511
+    }
+  ],
+  "selected_search": "manual",
+  "selected_candidate": "M5",
+  "dev_inner_AP_mean": 0.4171838772696506,
+  "dev_inner_AP_sd": 0.009784665261891522,
+  "threshold": 0.5,
+  "config": {
+    "id": "M5",
+    "optimizer": "adamw",
+    "hidden_layers": [
+      64,
+      32
+    ],
+    "activation": "relu",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "scaler": "standard",
+    "dropout": 0.0,
+    "clipping": false,
+    "scheduler": true,
+    "purpose": "Mimari etkisi ((32,) → (64,32))",
+    "hypothesis": "Yaklaşık üç kat daha fazla parametre küçük veri setinde anlamlı AP kazancı sağlamaz; daha hızlı aşırı öğrenme nedeniyle en iyi epoch'un daha erken olması beklenir.",
+    "unknown_strategy": "category"
+  }
+}
