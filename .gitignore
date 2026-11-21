@@ -1,0 +1,5 @@
+# LibreOffice lock dosyaları
+.~lock.*#
+
+# Word dosyaları
+*.docx
