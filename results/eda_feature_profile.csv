@@ -1,0 +1,20 @@
+,tür,benzersiz,NaN,unknown (n),unknown (%),özel kod
+age,sayısal,66,0,0,0.0,
+job,kategorik,12,0,35,1.062215477996965,
+marital,kategorik,4,0,8,0.24279210925644917,
+education,kategorik,8,0,128,3.8846737481031868,
+default,kategorik,3,0,638,19.362670713201823,
+housing,kategorik,3,0,90,2.731411229135053,
+loan,kategorik,3,0,90,2.731411229135053,
+contact,kategorik,2,0,0,0.0,
+month,kategorik,10,0,0,0.0,
+day_of_week,kategorik,5,0,0,0.0,
+campaign,sayısal,25,0,0,0.0,
+pdays,sayısal,18,0,0,0.0,"999 = son temas tarihi yok (n=3163, %96.0)"
+previous,sayısal,7,0,0,0.0,
+poutcome,kategorik,3,0,0,0.0,nonexistent = önceki kampanya yok (n=2828)
+emp.var.rate,sayısal,10,0,0,0.0,
+cons.price.idx,sayısal,26,0,0,0.0,
+cons.conf.idx,sayısal,26,0,0,0.0,
+euribor3m,sayısal,217,0,0,0.0,
+nr.employed,sayısal,11,0,0,0.0,

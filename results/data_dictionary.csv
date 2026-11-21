@@ -1,0 +1,22 @@
+özellik,açıklama,dtype,rol
+age,Müşterinin yaşı,int64,sayısal
+job,Meslek türü,object,kategorik
+marital,Medeni durum,object,kategorik
+education,Eğitim düzeyi,object,kategorik
+default,Temerrüde düşmüş kredisi var mı?,object,kategorik
+housing,Konut kredisi var mı?,object,kategorik
+loan,Bireysel (tüketici) kredisi var mı?,object,kategorik
+contact,İletişim türü (cellular / telephone),object,kategorik
+month,Son temasın yapıldığı ay,object,kategorik
+day_of_week,Son temasın yapıldığı gün,object,kategorik
+duration,Son görüşmenin süresi (sn) — görüşme bitmeden bilinmez,int64,çıkarıldı
+campaign,Bu kampanyada müşteriyle yapılan temas sayısı (son temas dahil),int64,sayısal
+pdays,Önceki kampanyadaki son temastan bu yana geçen gün (UCI tanımı: 999 = önceden temas yok),int64,sayısal
+previous,Bu kampanyadan önce müşteriyle yapılan temas sayısı,int64,sayısal
+poutcome,Önceki pazarlama kampanyasının sonucu,object,kategorik
+emp.var.rate,İstihdam değişim oranı (çeyreklik gösterge),float64,sayısal
+cons.price.idx,Tüketici fiyat endeksi (aylık gösterge),float64,sayısal
+cons.conf.idx,Tüketici güven endeksi (aylık gösterge),float64,sayısal
+euribor3m,3 aylık Euribor faiz oranı (günlük gösterge),float64,sayısal
+nr.employed,"Çalışan sayısı (çeyreklik gösterge, bin kişi)",float64,sayısal
+y,Müşteri vadeli mevduat hesabı açtı mı? (hedef),object,hedef

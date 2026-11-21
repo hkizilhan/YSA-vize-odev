@@ -1,0 +1,4 @@
+pdays≠999,previous>0,failure,nonexistent,success
+False,False,0,2828,0
+False,True,335,0,0
+True,True,15,0,117
