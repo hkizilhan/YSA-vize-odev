@@ -1,0 +1,299 @@
+{
+  "selected_candidate": "M5",
+  "selected_search": "manual",
+  "selection_rule": "Her arama kendi kazananını iç CV mean AP ile seçer (eşitlikte düşük SD, sonra sıra); iki kazanan arasından development iç CV mean AP'si yüksek olan seçilir (eşitlikte düşük SD, sonra manuel).",
+  "dev_inner_AP_mean": 0.4171838772696506,
+  "dev_inner_AP_sd": 0.009784665261891522,
+  "config": {
+    "id": "M5",
+    "optimizer": "adamw",
+    "hidden_layers": [
+      64,
+      32
+    ],
+    "activation": "relu",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "scaler": "standard",
+    "dropout": 0.0,
+    "clipping": false,
+    "scheduler": true,
+    "purpose": "Mimari etkisi ((32,) → (64,32))",
+    "hypothesis": "Yaklaşık üç kat daha fazla parametre küçük veri setinde anlamlı AP kazancı sağlamaz; daha hızlı aşırı öğrenme nedeniyle en iyi epoch'un daha erken olması beklenir.",
+    "unknown_strategy": "category"
+  },
+  "architecture": [
+    "Linear 62→64",
+    "Linear 64→32",
+    "Linear 32→1"
+  ],
+  "n_params": 6145,
+  "loss": "BCEWithLogitsLoss",
+  "threshold": 0.5,
+  "primary_model": "MLP seed 31065",
+  "weight_seeds": [
+    31065,
+    32065,
+    33065
+  ],
+  "early_stopping": {
+    "monitor": "early-stop alt kümesinde BCE kaybı",
+    "mode": "min",
+    "patience": 15,
+    "restore_best_weights": true
+  },
+  "lr_scheduler": {
+    "name": "ReduceLROnPlateau",
+    "monitor": "early-stop alt kümesinde BCE kaybı",
+    "mode": "min",
+    "factor": 0.5,
+    "patience": 5,
+    "min_lr": 1e-05
+  },
+  "early_stop_subset": {
+    "fraction": 0.15,
+    "seed": 31069
+  },
+  "per_seed": [
+    {
+      "seed": 31065,
+      "best_epoch": 3,
+      "stopped_epoch": 18,
+      "n_lr_drops": 2,
+      "final_lr": 0.00025,
+      "best_es_loss": 0.27308210730552673,
+      "n_features": 62,
+      "n_fit": 2800,
+      "n_es": 495,
+      "warnings": ""
+    },
+    {
+      "seed": 32065,
+      "best_epoch": 4,
+      "stopped_epoch": 19,
+      "n_lr_drops": 2,
+      "final_lr": 0.00025,
+      "best_es_loss": 0.27543821930885315,
+      "n_features": 62,
+      "n_fit": 2800,
+      "n_es": 495,
+      "warnings": ""
+    },
+    {
+      "seed": 33065,
+      "best_epoch": 5,
+      "stopped_epoch": 20,
+      "n_lr_drops": 2,
+      "final_lr": 0.00025,
+      "best_es_loss": 0.27527153491973877,
+      "n_features": 62,
+      "n_fit": 2800,
+      "n_es": 495,
+      "warnings": ""
+    }
+  ],
+  "preprocessing_state_primary": {
+    "numeric_columns": [
+      "age",
+      "campaign",
+      "pdays",
+      "previous",
+      "emp.var.rate",
+      "cons.price.idx",
+      "cons.conf.idx",
+      "euribor3m",
+      "nr.employed"
+    ],
+    "numeric_median": {
+      "age": 38.0,
+      "campaign": 2.0,
+      "pdays": 4.0,
+      "previous": 0.0,
+      "emp.var.rate": 1.1,
+      "cons.price.idx": 93.918,
+      "cons.conf.idx": -41.8,
+      "euribor3m": 4.857,
+      "nr.employed": 5191.0
+    },
+    "missing_indicator_for": [
+      "pdays"
+    ],
+    "scaler": "StandardScaler",
+    "scaler_params": {
+      "mean_": [
+        40.273929,
+        2.531071,
+        4.075357,
+        0.186786,
+        0.096571,
+        93.587909,
+        -40.458857,
+        3.634281,
+        5166.833786,
+        0.959643
+      ],
+      "scale_": [
+        10.363309,
+        2.516325,
+        0.886627,
+        0.540275,
+        1.561243,
+        0.580815,
+        4.572422,
+        1.730917,
+        73.097984,
+        0.196795
+      ]
+    },
+    "clipping": null,
+    "ohe_categories": {
+      "job": [
+        "admin.",
+        "blue-collar",
+        "entrepreneur",
+        "housemaid",
+        "management",
+        "retired",
+        "self-employed",
+        "services",
+        "student",
+        "technician",
+        "unemployed",
+        "unknown"
+      ],
+      "marital": [
+        "divorced",
+        "married",
+        "single",
+        "unknown"
+      ],
+      "education": [
+        "basic.4y",
+        "basic.6y",
+        "basic.9y",
+        "high.school",
+        "illiterate",
+        "professional.course",
+        "university.degree",
+        "unknown"
+      ],
+      "default": [
+        "no",
+        "unknown"
+      ],
+      "housing": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "loan": [
+        "no",
+        "unknown",
+        "yes"
+      ],
+      "contact": [
+        "cellular",
+        "telephone"
+      ],
+      "month": [
+        "apr",
+        "aug",
+        "dec",
+        "jul",
+        "jun",
+        "mar",
+        "may",
+        "nov",
+        "oct",
+        "sep"
+      ],
+      "day_of_week": [
+        "fri",
+        "mon",
+        "thu",
+        "tue",
+        "wed"
+      ],
+      "poutcome": [
+        "failure",
+        "nonexistent",
+        "success"
+      ]
+    },
+    "feature_names_out": [
+      "num__age",
+      "num__campaign",
+      "num__pdays",
+      "num__previous",
+      "num__emp.var.rate",
+      "num__cons.price.idx",
+      "num__cons.conf.idx",
+      "num__euribor3m",
+      "num__nr.employed",
+      "num__missingindicator_pdays",
+      "cat__job_admin.",
+      "cat__job_blue-collar",
+      "cat__job_entrepreneur",
+      "cat__job_housemaid",
+      "cat__job_management",
+      "cat__job_retired",
+      "cat__job_self-employed",
+      "cat__job_services",
+      "cat__job_student",
+      "cat__job_technician",
+      "cat__job_unemployed",
+      "cat__job_unknown",
+      "cat__marital_divorced",
+      "cat__marital_married",
+      "cat__marital_single",
+      "cat__marital_unknown",
+      "cat__education_basic.4y",
+      "cat__education_basic.6y",
+      "cat__education_basic.9y",
+      "cat__education_high.school",
+      "cat__education_illiterate",
+      "cat__education_professional.course",
+      "cat__education_university.degree",
+      "cat__education_unknown",
+      "cat__default_no",
+      "cat__default_unknown",
+      "cat__housing_no",
+      "cat__housing_unknown",
+      "cat__housing_yes",
+      "cat__loan_no",
+      "cat__loan_unknown",
+      "cat__loan_yes",
+      "cat__contact_cellular",
+      "cat__contact_telephone",
+      "cat__month_apr",
+      "cat__month_aug",
+      "cat__month_dec",
+      "cat__month_jul",
+      "cat__month_jun",
+      "cat__month_mar",
+      "cat__month_may",
+      "cat__month_nov",
+      "cat__month_oct",
+      "cat__month_sep",
+      "cat__day_of_week_fri",
+      "cat__day_of_week_mon",
+      "cat__day_of_week_thu",
+      "cat__day_of_week_tue",
+      "cat__day_of_week_wed",
+      "cat__poutcome_failure",
+      "cat__poutcome_nonexistent",
+      "cat__poutcome_success"
+    ]
+  },
+  "reference_model": "LogisticRegression(C=1.0, lbfgs, max_iter=5000) + M1 ile aynı sabit ön işleme",
+  "environment": {
+    "python": "3.13.9",
+    "torch": "2.12.0+cpu",
+    "sklearn": "1.7.2",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "platform": "Linux-7.3.3-300.fc45.x86_64-x86_64-with-glibc2.44",
+    "processor": "AMD Ryzen 5 5500U (CPU, torch.set_num_threads(1))"
+  }
+}
